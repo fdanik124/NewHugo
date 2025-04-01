@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main  # укажите вашу ветку, например, 'main' или 'master'
+
+media_folder: "static/images/uploads"  # Папка для загрузки изображений
+public_folder: "/images/uploads"  # Путь для отображения изображений
+
+collections:
+  - name: "posts"  # Коллекция, которая будет отображать папку "content/posts"
+    label: "Posts"
+    folder: "content/posts"  # Папка, в которой будут храниться посты
+    create: true  # Включить создание новых постов
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"  # Формат для slug в URL
+    fields:
+      - { label: "Title", name: "title", widget: "string" }  # Заголовок поста
+      - { label: "Date", name: "date", widget: "datetime" }  # Дата публикации
+      - { label: "Draft", name: "draft", widget: "boolean" }  # Черновик или опубликованный
+      - { label: "Body", name: "body", widget: "markdown" }  # Основной текст поста
+      - { label: "Tags", name: "tags", widget: "list" }  # Метки (опционально)
